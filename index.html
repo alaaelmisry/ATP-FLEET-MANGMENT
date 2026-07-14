@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ATP Fleet Management</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- HEADER -->
+<!-- ========================= -->
+
+<header class="header">
+
+    <h1>🚗 ATP Fleet Management</h1>
+
+    <p>إدارة المركبات والمعدات</p>
+
+    <input
+        id="search"
+        type="text"
+        placeholder="ابحث برقم المركبة أو اسم السائق..."
+    >
+
+</header>
+
+
+<!-- ========================= -->
+<!-- MAIN -->
+<!-- ========================= -->
+
+<main id="mainContainer">
+
+
+    <!-- PRIVATE -->
+
+    <section class="category">
+
+        <h2>PRIVATE</h2>
+
+        <div class="section-stats">
+
+            <div class="stat-card">
+                <span id="privateTotal">0</span>
+                <small>الإجمالي</small>
+            </div>
+
+            <div class="stat-card working">
+                <span id="privateWorking">0</span>
+                <small>تعمل</small>
+            </div>
+
+            <div class="stat-card fault">
+                <span id="privateFault">0</span>
+                <small>متوقف</small>
+            </div>
+
+        </div>
+
+        <div
+            id="privateList"
+            class="vehicle-list">
+
+        </div>
+
+    </section>
+
+
+
+    <!-- TRUCKS -->
+
+    <section class="category">
+
+        <h2>TRUCKS</h2>
+
+        <div class="section-stats">
+
+            <div class="stat-card">
+                <span id="truckTotal">0</span>
+                <small>الإجمالي</small>
+            </div>
+
+            <div class="stat-card working">
+                <span id="truckWorking">0</span>
+                <small>تعمل</small>
+            </div>
+
+            <div class="stat-card fault">
+                <span id="truckFault">0</span>
+                <small>متوقف</small>
+            </div>
+
+        </div>
+
+        <div
+            id="truckList"
+            class="vehicle-list">
+
+        </div>
+
+    </section>
+
+
+
+    <!-- EQUIPMENTS -->
+
+    <section class="category">
+
+        <h2>EQUIPMENTS</h2>
+
+        <div class="section-stats">
+
+            <div class="stat-card">
+                <span id="equipmentTotal">0</span>
+                <small>الإجمالي</small>
+            </div>
+
+            <div class="stat-card working">
+                <span id="equipmentWorking">0</span>
+                <small>تعمل</small>
+            </div>
+
+            <div class="stat-card fault">
+                <span id="equipmentFault">0</span>
+                <small>متوقف</small>
+            </div>
+
+        </div>
+
+        <div
+            id="equipmentList"
+            class="vehicle-list">
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ========================= -->
+<!-- VEHICLE MODAL -->
+<!-- ========================= -->
+
+<div id="vehicleModal"
+     class="modal hidden">
+
+    <div class="modal-content">
+
+        <h2>بيانات المركبة</h2>
+
+
+        <label>رقم المركبة</label>
+
+        <input
+            id="modalNumber"
+            type="text"
+            placeholder="رقم المركبة">
+
+
+        <label>اسم السائق</label>
+
+        <input
+            id="modalDriver"
+            type="text"
+            placeholder="اسم السائق">
+
+
+        <label>حالة المركبة</label>
+
+        <select id="modalStatus">
+
+            <option value="working">
+                تعمل
+            </option>
+
+            <option value="fault">
+                متوقف
+            </option>
+
+        </select>
+
+
+        <div class="modal-buttons">
+
+            <button id="saveVehicle">
+                💾 حفظ
+            </button>
+
+            <button id="cancelVehicle">
+                إلغاء
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<!-- ========================= -->
+<!-- NOTES MODAL -->
+<!-- ========================= -->
+
+<div id="notesModal"
+     class="modal hidden">
+
+    <div class="modal-content">
+
+        <h2>ملاحظات المركبة</h2>
+
+
+        <textarea
+            id="notesText"
+            rows="6"
+            placeholder="اكتب الملاحظات هنا ...">
+
+        </textarea>
+
+
+        <p id="notesUpdatedAt"
+           class="notes-date">
+
+            لا يوجد تحديث سابق
+
+        </p>
+
+
+        <div class="modal-buttons">
+
+            <button id="saveNotes">
+
+                💾 حفظ
+
+            </button>
+
+
+            <button id="closeNotes">
+
+                إغلاق
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
