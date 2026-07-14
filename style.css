@@ -1,0 +1,828 @@
+/*==================================================
+ ATP Fleet Management 4.0
+ شركة الراشد للتقنية والطاقة
+==================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+body{
+    background:#f3f4f6;
+    direction:rtl;
+    color:#1f2937;
+    overflow:hidden;
+}
+
+
+/*==================================================
+HEADER
+==================================================*/
+
+.header{
+
+    background:#111827;
+    color:#ffffff;
+    padding:18px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+
+}
+
+.header h1{
+
+    font-size:28px;
+    margin-bottom:8px;
+
+}
+
+.header p{
+
+    color:#d1d5db;
+    margin-bottom:15px;
+    font-size:15px;
+
+}
+
+
+/*==================================================
+SEARCH
+==================================================*/
+
+#search{
+
+    width:100%;
+    max-width:500px;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    font-size:15px;
+
+}
+
+
+/*==================================================
+MAIN CONTAINER
+==================================================*/
+
+#mainContainer{
+
+    padding:15px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:15px;
+
+    height:
+    calc(100vh - 165px);
+
+}
+
+
+/*==================================================
+CATEGORY
+==================================================*/
+
+.category{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:15px;
+
+    box-shadow:
+    0 3px 12px
+    rgba(0,0,0,.08);
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+}
+
+
+.category h2{
+
+    text-align:center;
+
+    color:#111827;
+
+    margin-bottom:12px;
+
+    font-size:22px;
+
+}
+
+
+/*==================================================
+SECTION STATS
+==================================================*/
+
+.section-stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:6px;
+
+    margin-bottom:12px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:10;
+
+    background:#ffffff;
+
+}
+
+
+.stat-card{
+
+    background:#e5e7eb;
+
+    border-radius:10px;
+
+    padding:10px;
+
+    text-align:center;
+
+}
+
+
+.stat-card span{
+
+    display:block;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+}
+
+
+.stat-card small{
+
+    display:block;
+
+    margin-top:4px;
+
+    font-size:11px;
+
+}
+
+
+.working{
+
+    background:#16a34a;
+    color:#ffffff;
+
+}
+
+
+.fault{
+
+    background:#dc2626;
+    color:#ffffff;
+
+}
+
+
+/*==================================================
+VEHICLE LIST
+==================================================*/
+
+.vehicle-list{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
+    overflow-y:auto;
+
+    padding-left:2px;
+
+}
+
+
+/*==================================================
+SCROLL BAR
+==================================================*/
+
+.vehicle-list::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+
+.vehicle-list::-webkit-scrollbar-thumb{
+
+    background:#cbd5e1;
+
+    border-radius:20px;
+
+}
+
+
+.vehicle-list::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+/*==================================================
+VEHICLE ROW
+==================================================*/
+
+.vehicle-row{
+
+    display:grid;
+
+    grid-template-columns:
+    45px
+    1fr
+    1fr
+    45px;
+
+    align-items:center;
+
+    background:#ffffff;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    min-height:48px;
+
+}
+
+
+.vehicle-row:hover{
+
+    background:#f8fafc;
+
+    box-shadow:
+    0 3px 8px
+    rgba(0,0,0,.08);
+
+}
+
+
+.vehicle-row:active{
+
+    transform:scale(.99);
+
+}
+
+
+/*==================================================
+VEHICLE CELLS
+==================================================*/
+
+.vehicle-cell{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:8px 4px;
+
+    min-height:48px;
+
+    border-left:
+    1px solid #e5e7eb;
+
+}
+
+
+.vehicle-cell:last-child{
+
+    border-left:none;
+
+}
+
+
+/*==================================================
+STATUS DOT
+==================================================*/
+
+.status-dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+}
+
+
+.status-working{
+
+    background:#16a34a;
+
+}
+
+
+.status-fault{
+
+    background:#dc2626;
+
+}
+
+
+/*==================================================
+VEHICLE NUMBER
+==================================================*/
+
+.vehicle-number{
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    color:#111827;
+
+}
+
+
+/*==================================================
+VEHICLE DRIVER
+==================================================*/
+
+.vehicle-driver{
+
+    font-size:13px;
+
+    color:#374151;
+
+}
+
+
+/*==================================================
+VEHICLE NOTES
+==================================================*/
+
+.vehicle-notes{
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+}
+
+
+.vehicle-notes:hover{
+
+    transform:scale(1.10);
+
+}
+
+
+/*==================================================
+NOTES ICON COLORS
+==================================================*/
+
+.has-notes{
+
+    color:#2563eb;
+
+}
+
+
+.no-notes{
+
+    color:#9ca3af;
+
+}
+
+/*==================================================
+MODAL
+==================================================*/
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    rgba(0,0,0,.45);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    z-index:999;
+
+}
+
+
+.hidden{
+
+    display:none;
+
+}
+
+
+/*==================================================
+MODAL CONTENT
+==================================================*/
+
+.modal-content{
+
+    width:100%;
+
+    max-width:500px;
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:
+    0 15px 40px
+    rgba(0,0,0,.20);
+
+}
+
+
+.modal-content h2{
+
+    text-align:center;
+
+    color:#111827;
+
+    margin-bottom:20px;
+
+}
+
+
+/*==================================================
+LABELS
+==================================================*/
+
+.modal-content label{
+
+    display:block;
+
+    margin-top:15px;
+
+    margin-bottom:6px;
+
+    font-weight:bold;
+
+    color:#374151;
+
+}
+
+
+/*==================================================
+INPUTS
+==================================================*/
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-size:15px;
+
+}
+
+
+.modal-content textarea{
+
+    resize:vertical;
+
+    min-height:120px;
+
+}
+
+
+/*==================================================
+LAST UPDATE DATE
+==================================================*/
+
+.notes-date{
+
+    margin-top:12px;
+
+    text-align:center;
+
+    color:#6b7280;
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}
+
+
+/*==================================================
+BUTTONS
+==================================================*/
+
+.modal-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+
+.modal-buttons button{
+
+    flex:1;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:13px;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+.modal-buttons button:hover{
+
+    opacity:.9;
+
+}
+
+
+/*==================================================
+SAVE BUTTONS
+==================================================*/
+
+#saveVehicle,
+#saveNotes{
+
+    background:#16a34a;
+
+    color:#ffffff;
+
+}
+
+
+/*==================================================
+CANCEL BUTTONS
+==================================================*/
+
+#cancelVehicle,
+#closeNotes{
+
+    background:#6b7280;
+
+    color:#ffffff;
+
+}
+/*==================================================
+RESPONSIVE DESIGN
+==================================================*/
+
+@media (max-width:900px){
+
+    .header{
+
+        padding:12px;
+
+    }
+
+
+    .header h1{
+
+        font-size:20px;
+
+    }
+
+
+    .header p{
+
+        font-size:12px;
+
+        margin-bottom:10px;
+
+    }
+
+
+    #search{
+
+        padding:10px;
+
+        font-size:13px;
+
+    }
+
+
+    #mainContainer{
+
+        padding:8px;
+
+        gap:8px;
+
+        height:
+        calc(100vh - 135px);
+
+    }
+
+
+    .category{
+
+        padding:8px;
+
+        border-radius:12px;
+
+    }
+
+
+    .category h2{
+
+        font-size:15px;
+
+        margin-bottom:8px;
+
+    }
+
+
+    .section-stats{
+
+        gap:4px;
+
+        margin-bottom:8px;
+
+    }
+
+
+    .stat-card{
+
+        padding:6px;
+
+    }
+
+
+    .stat-card span{
+
+        font-size:14px;
+
+    }
+
+
+    .stat-card small{
+
+        font-size:9px;
+
+    }
+
+
+    .vehicle-row{
+
+        grid-template-columns:
+        30px
+        1fr
+        1fr
+        30px;
+
+        min-height:38px;
+
+    }
+
+
+    .vehicle-cell{
+
+        padding:4px;
+
+        min-height:38px;
+
+    }
+
+
+    .status-dot{
+
+        width:9px;
+
+        height:9px;
+
+    }
+
+
+    .vehicle-number{
+
+        font-size:11px;
+
+    }
+
+
+    .vehicle-driver{
+
+        font-size:10px;
+
+    }
+
+
+    .vehicle-notes{
+
+        font-size:14px;
+
+    }
+
+
+    .modal-content{
+
+        padding:18px;
+
+    }
+
+
+    .modal-content h2{
+
+        font-size:18px;
+
+    }
+
+
+    .modal-content input,
+    .modal-content select,
+    .modal-content textarea{
+
+        padding:10px;
+
+        font-size:13px;
+
+    }
+
+
+    .modal-buttons button{
+
+        padding:10px;
+
+        font-size:13px;
+
+    }
+
+
+    .notes-date{
+
+        font-size:11px;
+
+    }
+
+}
+
+
+/*==================================================
+END OF FILE
+==================================================*/
+
