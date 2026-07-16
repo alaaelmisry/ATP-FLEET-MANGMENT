@@ -4,6 +4,11 @@
 //==================================================
 function updateDateTime() {
 
+    const dateElement =
+        document.getElementById("dateTime");
+
+    if (!dateElement) return;
+
     const now = new Date();
 
     const days = [
@@ -18,19 +23,17 @@ function updateDateTime() {
 
     const dayName = days[now.getDay()];
 
-    const date = now.toLocaleDateString("en-GB");
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
-    });
+    const date =
+        now.toLocaleDateString("en-GB");
 
-    const time = now.toLocaleTimeString("ar-SA", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit"
-    });
+    const time =
+        now.toLocaleTimeString("ar-SA", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        });
 
-    document.getElementById("dateTime").textContent =
+    dateElement.textContent =
         `${dayName} - ${date} - ${time}`;
 
 }
@@ -38,7 +41,6 @@ function updateDateTime() {
 updateDateTime();
 
 setInterval(updateDateTime, 1000);
-
 //==================================================
 // LISTS
 //==================================================
