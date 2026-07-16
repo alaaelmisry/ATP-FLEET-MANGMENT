@@ -2,7 +2,42 @@
 // ATP Fleet Management 4.0
 // Main Script
 //==================================================
+function updateDateTime() {
 
+    const now = new Date();
+
+    const days = [
+        "الأحد",
+        "الاثنين",
+        "الثلاثاء",
+        "الأربعاء",
+        "الخميس",
+        "الجمعة",
+        "السبت"
+    ];
+
+    const dayName = days[now.getDay()];
+
+    const date = now.toLocaleDateString("en-GB");
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+    });
+
+    const time = now.toLocaleTimeString("ar-SA", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
+
+    document.getElementById("dateTime").textContent =
+        `${dayName} - ${date} - ${time}`;
+
+}
+
+updateDateTime();
+
+setInterval(updateDateTime, 1000);
 
 //==================================================
 // LISTS
