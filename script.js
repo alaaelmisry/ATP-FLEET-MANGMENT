@@ -1,3 +1,4 @@
+const WHATSAPP_NUMBER = "966509495516";
 //==================================================
 // ATP Fleet Management 4.0
 // Main Script
@@ -731,29 +732,98 @@ saveNotesButton.addEventListener(
 
     function(){
 
-
         if(!selectedNotesVehicle)
             return;
 
 
-        selectedNotesVehicle.notes =
-
-            notesText.value.trim();
+        const notes = notesText.value.trim();
 
 
-        selectedNotesVehicle.updatedAt =
+        if(notes === ""){
 
-            new Date().toLocaleString(
-                "ar-SA"
-            );
+            alert("يرجى كتابة الملاحظة أولاً.");
+
+            return;
+
+        }
 
 
-        saveData();
+        const status =
 
-        displayVehicles();
+        selectedNotesVehicle.status === "working"
+
+        ? "تعمل"
+
+        : "متوقفة";
+
+
+        const now = new Date();
+
+
+        const days = [
+            "الأحد",
+            "الاثنين",
+            "الثلاثاء",
+            "الأربعاء",
+            "الخميس",
+            "الجمعة",
+            "السبت"
+        ];
+
+
+        const dayName =
+        days[now.getDay()];
+
+
+        const date =
+        now.toLocaleDateString("en-GB");
+
+
+        const time =
+        now.toLocaleTimeString("ar-SA");
+
+
+        const message =
+
+`شركة الراشد للتقنية والطاقة
+
+ATP Fleet Management
+
+
+رقم المركبة : ${selectedNotesVehicle.number}
+
+اسم السائق : ${selectedNotesVehicle.driver}
+
+حالة المركبة : ${status}
+
+
+الملاحظة :
+
+${notes}
+
+
+-------------------------
+
+اليوم : ${dayName}
+
+التاريخ : ${date}
+
+الوقت : ${time}`;
+
+
+
+        const url =
+
+`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+
+        window.open(url,"_blank");
+
+
+        notesText.value = "";
+
 
         closeNotesModal();
-
 
     }
 
